@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Attendance Dashboard Live&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg:#f6f7fb;--surface:#fff;--surface-2:#f3f6fb;--text:#18212f;--muted:#667085;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--primary:#0f766e;--primary-2:#115e59;--success:#1d7f45;--danger:#c62828;--neutral:#8a94a6;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--border:#dbe2ea;--shadow:0 12px 30px rgba(14,23,38,.08);--radius:20px</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>*{box-sizing:border-box}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:0;font-family:Inter,system-ui,sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:linear-gradient(180deg,#f8fafc 0%,#eef4fb 100%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:var(--text)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a{color:inherit;text-decoration:none}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.app{max-width:1180px;margin:0 auto;padding:16px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid;grid-template-columns:1.2fr .8fr;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap:16px;align-items:stretch;margin-bottom:16px</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.panel{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:rgba(255,255,255,.88);backdrop-filter:blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:var(--radius)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-main{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:20px 20px 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:linear-gradient(135deg,#0f766e 0%,#155e75 100%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:#fff;position:relative;overflow:hidden</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-main:after{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>content:"";position:absolute;inset:auto -40px -50px auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:220px;height:220px;border-radius:50%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), rgba(255,255,255,0));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.eyebrow{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:inline-flex;align-items:center;gap:8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:8px 12px;border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:rgba(255,255,255,.14);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:clamp(1.8rem,3.2vw,2.6rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height:1.05;margin:12px 0 8px</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.lead{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width:54ch;color:rgba(255,255,255,.86);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:1rem;line-height:1.6</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-actions,.controls,.topbar{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex;gap:12px;flex-wrap:wrap</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-actions{margin-top:18px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:inline-flex;align-items:center;justify-content:center;gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:12px 16px;border-radius:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:700;border:1px solid transparent;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition:.18s ease;cursor:pointer</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn-primary{background:#fff;color:#0f766e}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn-ghost{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:rgba(255,255,255,.1);color:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-color:rgba(255,255,255,.18)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn-dark{background:#101828;color:#fff}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-side{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:16px;display:grid;gap:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:14px;border-radius:18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:var(--surface-2);border:1px solid var(--border)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-label{font-size:.82rem;color:var(--muted);margin-bottom:6px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-value{font-size:1.8rem;font-weight:800;line-height:1}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-sub{margin-top:8px;font-size:.9rem;color:var(--muted)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.topbar{margin:8px 0 12px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.input{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>min-width:240px;flex:1;padding:12px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:14px;border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#fff;font:inherit</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tabs{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex;gap:10px;margin:10px 0 16px;flex-wrap:wrap</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tab{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:10px 14px;border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#e9eef6;color:#516074;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:700;border:none;cursor:pointer</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tab.active{background:#0f766e;color:#fff}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.view{display:none}.view.active{display:block}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-head{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex;justify-content:space-between;align-items:end;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap:12px;margin:6px 0 10px</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-head h2{margin:0;font-size:1.35rem}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-head p{margin:0;color:var(--muted);font-size:.95rem}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.courses{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap:14px</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.course-card{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:14px;background:var(--surface);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:18px;box-shadow:var(--shadow)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.course-top{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex;justify-content:space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items:center;gap:10px;margin-bottom:10px</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.badge{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:6px 10px;border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:.78rem;font-weight:800;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#e7f6f4;color:#0f766e</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.recent-strip{display:flex;gap:6px;flex-wrap:wrap}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:30px;height:30px;border-radius:8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid;place-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:800;font-size:.8rem;color:#fff</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.p{background:var(--success)}.a{background:var(--danger)}.n{background:var(--neutral)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legend{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:var(--muted);font-size:.9rem</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.legend span{display:inline-flex;align-items:center;gap:8px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.dot{width:12px;height:12px;border-radius:4px;display:inline-block}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.table-wrap{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:var(--surface);border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:20px;overflow:hidden;box-shadow:var(--shadow)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>table{width:100%;border-collapse:collapse}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>th,td{padding:10px 12px;text-align:left}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>th{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#101828;color:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:.86rem;letter-spacing:.03em</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tr:nth-child(even) td{background:#fbfcfe}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>td{border-top:1px solid #edf1f6}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pct{font-weight:800}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.good{color:var(--success)}.bad{color:var(--danger)}.mid{color:#9a6b00}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.records{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:18px;display:flex;justify-content:space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items:center;gap:18px;flex-wrap:wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:linear-gradient(180deg,#fff,#f4f8fc);margin-top:14px</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.records h3{margin:0 0 6px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.records p{margin:0;color:var(--muted);max-width:52ch}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.status{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:12px 14px;border-radius:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#eef4fb;color:#355070;font-weight:600</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.status.ok{background:#e6f7ef;color:#0e6b3f}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.status.err{background:#fdecec;color:#9f2222}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width:900px){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.hero{grid-template-columns:1fr}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.app{padding:12px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="app"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="hero"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="panel hero-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="eyebrow"&gt;Attendance Automator Live&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Your sheet-backed attendance dashboard.&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="lead"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>This version fetches live data from your Apps Script web app. It shows the last logged</p>
+<p class="p1"><span class="Apple-converted-space">          </span>days classwise, a polished totals view, and a direct button to open the full Google Sheet records.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn btn-primary" data-tab-target="dashboard"&gt;Open dashboard&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn btn-ghost" data-tab-target="totals"&gt;View totals&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="panel hero-side"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="mini-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-label"&gt;Courses tracked&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-value" id="courseCount"&gt;—&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-sub"&gt;From live sheet data&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-label"&gt;Average attendance&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-value" id="avgAttendance"&gt;—&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-sub"&gt;Across all courses&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat-label"&gt;Most recent date shown&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat-value" id="recentDate" style="font-size:1.45rem"&gt;—&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat-sub"&gt;Refresh after logging attendance.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="panel" style="padding:14px;margin-bottom:12px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="topbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">          </span>class="input"</p>
+<p class="p1"><span class="Apple-converted-space">          </span>id="apiUrl"</p>
+<p class="p1"><span class="Apple-converted-space">          </span>aria-label="Apps Script URL"</p>
+<p class="p1"><span class="Apple-converted-space">          </span>value="https://script.google.com/macros/s/AKfycbxXuxkMWoGKYDbWN0fM5W_5b0xl0Pkqq4iaOhI5bx3yg8gdrLH70ng8KLRakU9zwIPt/exec"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">          </span>class="input"</p>
+<p class="p1"><span class="Apple-converted-space">          </span>id="sheetUrl"</p>
+<p class="p1"><span class="Apple-converted-space">          </span>aria-label="Google Sheet URL"</p>
+<p class="p1"><span class="Apple-converted-space">          </span>value="https://docs.google.com/spreadsheets/d/1YaLztnx1f69XP0vc4EWzSVhhA-ONyx7CWVIpFV7Wccw/edit?usp=sharing"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn btn-dark" id="loadBtn"&gt;Load live data&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="status" class="status ok"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Ready. Tap Load live data whenever you want to refresh.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="tab active" data-tab="dashboard"&gt;Dashboard&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="tab" data-tab="totals"&gt;Totals&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="dashboard" class="view active"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="section-head"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2&gt;Last days classwise attendance&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;Newest status appears first in each course card.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="courses" id="coursesGrid"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="legend"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;&lt;i class="dot" style="background:#1d7f45"&gt;&lt;/i&gt; Present&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;&lt;i class="dot" style="background:#c62828"&gt;&lt;/i&gt; Absent&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;&lt;i class="dot" style="background:#8a94a6"&gt;&lt;/i&gt; No class&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="totals" class="view"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="section-head"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2&gt;Totals overview&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;Clean coursewise summary from the Totals tab.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="table-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;th&gt;Course&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;th&gt;Conducted&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;th&gt;Present&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;th&gt;Absent&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;th&gt;Attendance %&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;th&gt;Needed for 75%&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;tbody id="totalsBody"&gt;&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="panel records"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Full records&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Open the master Google Sheet in a new tab to inspect Attendance, Timetable, and Totals directly.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a</p>
+<p class="p1"><span class="Apple-converted-space">        </span>class="btn btn-primary"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>id="recordsBtn"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>href="https://docs.google.com/spreadsheets/d/1YaLztnx1f69XP0vc4EWzSVhhA-ONyx7CWVIpFV7Wccw/edit?usp=sharing"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>target="_blank"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>rel="noopener noreferrer"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Open full records</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const tabs = document.querySelectorAll('.tab');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const views = document.querySelectorAll('.view');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const directTabButtons = document.querySelectorAll('[data-tab-target]');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const statusBox = document.getElementById('status');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const apiUrlInput = document.getElementById('apiUrl');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const sheetUrlInput = document.getElementById('sheetUrl');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const recordsBtn = document.getElementById('recordsBtn');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function activateTab(name){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>tabs.forEach(t =&gt; t.classList.toggle('active', t.dataset.tab === name));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>views.forEach(v =&gt; v.classList.toggle('active', v.id === name));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>window.scrollTo({ top: 0, behavior: 'smooth' });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tabs.forEach(tab =&gt; tab.addEventListener('click', () =&gt; activateTab(tab.dataset.tab)));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>directTabButtons.forEach(btn =&gt; btn.addEventListener('click', () =&gt; activateTab(btn.dataset.tabTarget)));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function pillClass(val){ return val === 'P' ? 'p' : val === 'A' ? 'a' : 'n'; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function label(val){ return val === 'P' ? 'Present' : val === 'A' ? 'Absent' : 'No class'; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setStatus(text, mode=''){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statusBox.textContent = text;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statusBox.className = 'status' + (mode ? ' ' + mode : '');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function syncRecordsLink(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const url = sheetUrlInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>recordsBtn.href = url || '#';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>recordsBtn.style.pointerEvents = url &amp;&amp; url.startsWith('http') ? 'auto' : 'none';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>recordsBtn.style.opacity = url &amp;&amp; url.startsWith('http') ? '1' : '.55';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>sheetUrlInput.addEventListener('input', syncRecordsLink);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>syncRecordsLink();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderDashboard(data){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const grid = document.getElementById('coursesGrid');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Object.entries(data.recentByCourse).forEach(([course, marks]) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const total = data.totals.find(x =&gt; x.course === course) || { pct: 0, needed: 0 };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const card = document.createElement('article');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>card.className = 'course-card';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>card.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="course-top"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div style="font-size:1.05rem;font-weight:800"&gt;${course}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div style="margin-top:4px;color:var(--muted);font-size:.9rem"&gt;Latest logged days&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="badge"&gt;${total.pct}%&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="recent-strip"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>${marks.map(m =&gt; `&lt;div class="pill ${pillClass(m)}" title="${label(m)}"&gt;${m}&lt;/div&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="margin-top:10px;color:var(--muted);font-size:.9rem"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Needed for 75%: &lt;strong style="color:var(--text)"&gt;${total.needed}&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid.appendChild(card);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderTotals(data){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const body = document.getElementById('totalsBody');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body.innerHTML = data.totals.map(row =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const pctClass = row.pct &gt;= 75 ? 'good' : row.pct &gt;= 60 ? 'mid' : 'bad';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td style="font-weight:800"&gt;${row.course}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;${row.conducted}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;${row.present}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;${row.absent}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td class="pct ${pctClass}"&gt;${row.pct}%&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td style="font-weight:800"&gt;${row.needed}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderStats(data){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('courseCount').textContent = data.totals.length || '0';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('recentDate').textContent = data.latestDate || '—';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const avg = data.totals.length</p>
+<p class="p1"><span class="Apple-converted-space">        </span>? data.totals.reduce((a,b) =&gt; a + Number(b.pct || 0), 0) / data.totals.length</p>
+<p class="p1"><span class="Apple-converted-space">        </span>: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('avgAttendance').textContent = `${Math.round(avg)}%`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function loadLiveData(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const url = apiUrlInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>syncRecordsLink();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!url.startsWith('http')) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setStatus('Paste a valid Apps Script web app URL first.', 'err');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setStatus('Loading live data...');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const res = await fetch(url + (url.includes('?') ? '&amp;' : '?') + 'mode=dashboard');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!res.ok) throw new Error('HTTP ' + res.status);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const data = await res.json();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!data || !data.totals || !data.recentByCourse) throw new Error('Unexpected JSON shape');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderDashboard(data);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderTotals(data);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderStats(data);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setStatus('Live data loaded successfully.', 'ok');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (err) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setStatus('Could not load live data. Check deployment access, URL, and JSON code. ' + err.message, 'err');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('loadBtn').addEventListener('click', loadLiveData);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
