@@ -9,94 +9,89 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f6f7fb;--surface:#fff;--surface-2:#f3f6fb;--text:#18212f;--muted:#667085;
-      --primary:#0f766e;--primary-2:#115e59;--success:#1d7f45;--danger:#c62828;--neutral:#8a94a6;
-      --border:#dbe2ea;--shadow:0 12px 30px rgba(14,23,38,.08);--radius:20px
+      --bg:#000000;
+      --surface:#0b1220;
+      --surface-2:#020617;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --primary:#14b8a6;
+      --primary-2:#0f766e;
+      --success:#22c55e;
+      --danger:#f97373;
+      --neutral:#6b7280;
+      --border:#1f2933;
+      --shadow:0 18px 40px rgba(15,23,42,.8);
+      --radius:20px;
     }
     *{box-sizing:border-box}
     body{
-      margin:0;font-family:Inter,system-ui,sans-serif;
-      background:linear-gradient(180deg,#f8fafc 0%,#eef4fb 100%);
-      color:var(--text)
+      margin:0;
+      font-family:Inter,system-ui,sans-serif;
+      background:#000000;
+      color:var(--text);
     }
     a{color:inherit;text-decoration:none}
     .app{max-width:1180px;margin:0 auto;padding:16px}
-    .hero{
-      display:grid;grid-template-columns:1.2fr .8fr;
-      gap:16px;align-items:stretch;margin-bottom:16px
-    }
     .panel{
-      background:rgba(255,255,255,.88);backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow);
-      border-radius:var(--radius)
+      background:rgba(15,23,42,.98);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(148,163,184,.25);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
     }
-    .hero-main{
-      padding:20px 20px 18px;
-      background:linear-gradient(135deg,#0f766e 0%,#155e75 100%);
-      color:#fff;position:relative;overflow:hidden
-    }
-    .hero-main:after{
-      content:"";position:absolute;inset:auto -40px -50px auto;
-      width:220px;height:220px;border-radius:50%;
-      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), rgba(255,255,255,0));
-    }
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 12px;border-radius:999px;
-      background:rgba(255,255,255,.14);
-      font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase
-    }
-    h1{
-      font-size:clamp(1.8rem,3.2vw,2.6rem);
-      line-height:1.05;margin:12px 0 8px
-    }
-    .lead{
-      max-width:54ch;color:rgba(255,255,255,.86);
-      font-size:1rem;line-height:1.6
-    }
-    .hero-actions,.controls,.topbar{
-      display:flex;gap:12px;flex-wrap:wrap
-    }
-    .hero-actions{margin-top:18px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:12px 16px;border-radius:14px;
-      font-weight:700;border:1px solid transparent;
-      transition:.18s ease;cursor:pointer
-    }
-    .btn-primary{background:#fff;color:#0f766e}
-    .btn-ghost{
-      background:rgba(255,255,255,.1);color:#fff;
-      border-color:rgba(255,255,255,.18)
-    }
-    .btn-dark{background:#101828;color:#fff}
     .hero-side{
       padding:16px;display:grid;gap:14px;
-      background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%)
+      background:radial-gradient(circle at top left,#0f766e33 0,#020617 55%,#000000 100%);
+      margin-bottom:16px;
     }
     .mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
     .stat{
       padding:14px;border-radius:18px;
-      background:var(--surface-2);border:1px solid var(--border)
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.25);
     }
     .stat-label{font-size:.82rem;color:var(--muted);margin-bottom:6px}
     .stat-value{font-size:1.8rem;font-weight:800;line-height:1}
     .stat-sub{margin-top:8px;font-size:.9rem;color:var(--muted)}
-    .topbar{margin:8px 0 12px}
-    .input{
-      min-width:240px;flex:1;padding:12px 14px;
-      border-radius:14px;border:1px solid var(--border);
-      background:#fff;font:inherit
+    .topbar{
+      display:flex;justify-content:space-between;align-items:center;
+      gap:12px;flex-wrap:wrap;margin:0 0 12px
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 18px;border-radius:999px;
+      font-weight:600;border:1px solid transparent;
+      transition:.18s ease;cursor:pointer;font-size:.95rem;
+    }
+    .btn-dark{
+      background:#14b8a6;
+      color:#020617;
+      box-shadow:0 10px 25px rgba(20,184,166,.45);
+    }
+    .btn-dark:hover{
+      background:#22c55e;
+      box-shadow:0 14px 32px rgba(34,197,94,.55);
+      transform:translateY(-1px);
+    }
+    .btn-icon{
+      width:18px;height:18px;border-radius:999px;
+      background:#022c22;display:inline-flex;align-items:center;
+      justify-content:center;font-size:12px;
     }
     .tabs{
       display:flex;gap:10px;margin:10px 0 16px;flex-wrap:wrap
     }
     .tab{
       padding:10px 14px;border-radius:999px;
-      background:#e9eef6;color:#516074;
-      font-weight:700;border:none;cursor:pointer
+      background:#020617;color:#9ca3af;
+      font-weight:700;border:1px solid rgba(148,163,184,.4);
+      cursor:pointer
     }
-    .tab.active{background:#0f766e;color:#fff}
+    .tab.active{
+      background:#14b8a6;
+      border-color:#22c55e;
+      color:#020617;
+    }
     .view{display:none}.view.active{display:block}
     .section-head{
       display:flex;justify-content:space-between;align-items:end;
@@ -109,8 +104,9 @@
       gap:14px
     }
     .course-card{
-      padding:14px;background:var(--surface);
-      border:1px solid var(--border);
+      padding:14px;
+      background:#020617;
+      border:1px solid rgba(148,163,184,.35);
       border-radius:18px;box-shadow:var(--shadow)
     }
     .course-top{
@@ -120,15 +116,17 @@
     .badge{
       padding:6px 10px;border-radius:999px;
       font-size:.78rem;font-weight:800;
-      background:#e7f6f4;color:#0f766e
+      background:#022c22;color:#6ef9d7;
     }
     .recent-strip{display:flex;gap:6px;flex-wrap:wrap}
     .pill{
       width:30px;height:30px;border-radius:8px;
       display:grid;place-items:center;
-      font-weight:800;font-size:.8rem;color:#fff
+      font-weight:800;font-size:.8rem;color:#020617
     }
-    .p{background:var(--success)}.a{background:var(--danger)}.n{background:var(--neutral)}
+    .p{background:#22c55e}
+    .a{background:#f97373}
+    .n{background:#4b5563;color:#e5e7eb}
     .legend{
       display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;
       color:var(--muted);font-size:.9rem
@@ -136,92 +134,80 @@
     .legend span{display:inline-flex;align-items:center;gap:8px}
     .dot{width:12px;height:12px;border-radius:4px;display:inline-block}
     .table-wrap{
-      background:var(--surface);border:1px solid var(--border);
+      background:#020617;border:1px solid rgba(148,163,184,.35);
       border-radius:20px;overflow:hidden;box-shadow:var(--shadow)
     }
     table{width:100%;border-collapse:collapse}
     th,td{padding:10px 12px;text-align:left}
     th{
-      background:#101828;color:#fff;
-      font-size:.86rem;letter-spacing:.03em
+      background:#020617;color:#e5e7eb;
+      font-size:.86rem;letter-spacing:.03em;
+      border-bottom:1px solid rgba(148,163,184,.5);
     }
-    tr:nth-child(even) td{background:#fbfcfe}
-    td{border-top:1px solid #edf1f6}
+    tr:nth-child(even) td{background:#020617}
+    tr:nth-child(odd) td{background:#020617}
+    td{border-top:1px solid rgba(148,163,184,.2)}
     .pct{font-weight:800}
-    .good{color:var(--success)}.bad{color:var(--danger)}.mid{color:#9a6b00}
+    .good{color:#4ade80}
+    .bad{color:#fb7185}
+    .mid{color:#facc15}
     .records{
       padding:18px;display:flex;justify-content:space-between;
       align-items:center;gap:18px;flex-wrap:wrap;
-      background:linear-gradient(180deg,#fff,#f4f8fc);margin-top:14px
+      background:linear-gradient(135deg,#020617,#000000);margin-top:14px
     }
     .records h3{margin:0 0 6px}
     .records p{margin:0;color:var(--muted);max-width:52ch}
     .status{
-      padding:12px 14px;border-radius:14px;
-      background:#eef4fb;color:#355070;font-weight:600
+      padding:10px 14px;border-radius:999px;
+      background:#022c22;color:#6ef9d7;font-weight:600;
+      font-size:.9rem;display:inline-flex;align-items:center;gap:8px
     }
-    .status.ok{background:#e6f7ef;color:#0e6b3f}
-    .status.err{background:#fdecec;color:#9f2222}
+    .status-dot{
+      width:10px;height:10px;border-radius:999px;
+      background:#22c55e;
+    }
+    .status.err{background:#3f1a1a;color:#fecaca}
+    .status.err .status-dot{background:#f97373}
     @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
       .app{padding:12px}
+      .topbar{justify-content:flex-start}
     }
   </style>
 </head>
 <body>
   <div class="app">
-    <section class="hero">
-      <div class="panel hero-main">
-        <div class="eyebrow">Attendance Automator Live</div>
-        <h1>Your sheet-backed attendance dashboard.</h1>
-        <p class="lead">
-          This version fetches live data from your Apps Script web app. It shows the last logged
-          days classwise, a polished totals view, and a direct button to open the full Google Sheet records.
-        </p>
-        <div class="hero-actions">
-          <button class="btn btn-primary" data-tab-target="dashboard">Open dashboard</button>
-          <button class="btn btn-ghost" data-tab-target="totals">View totals</button>
-        </div>
-      </div>
-      <div class="panel hero-side">
-        <div class="mini-grid">
-          <div class="stat">
-            <div class="stat-label">Courses tracked</div>
-            <div class="stat-value" id="courseCount">—</div>
-            <div class="stat-sub">From live sheet data</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Average attendance</div>
-            <div class="stat-value" id="avgAttendance">—</div>
-            <div class="stat-sub">Across all courses</div>
-          </div>
+
+    <section class="panel hero-side">
+      <div class="mini-grid">
+        <div class="stat">
+          <div class="stat-label">Courses tracked</div>
+          <div class="stat-value" id="courseCount">—</div>
+          <div class="stat-sub">From live sheet data</div>
         </div>
         <div class="stat">
-          <div class="stat-label">Most recent date shown</div>
-          <div class="stat-value" id="recentDate" style="font-size:1.45rem">—</div>
-          <div class="stat-sub">Refresh after logging attendance.</div>
+          <div class="stat-label">Average attendance</div>
+          <div class="stat-value" id="avgAttendance">—</div>
+          <div class="stat-sub">Across all courses</div>
         </div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Most recent date shown</div>
+        <div class="stat-value" id="recentDate" style="font-size:1.45rem">—</div>
+        <div class="stat-sub">Refresh after logging attendance.</div>
       </div>
     </section>
 
     <div class="panel" style="padding:14px;margin-bottom:12px;">
       <div class="topbar">
-        <input
-          class="input"
-          id="apiUrl"
-          aria-label="Apps Script URL"
-          value="https://script.google.com/macros/s/AKfycbxXuxkMWoGKYDbWN0fM5W_5b0xl0Pkqq4iaOhI5bx3yg8gdrLH70ng8KLRakU9zwIPt/exec"
-        >
-        <input
-          class="input"
-          id="sheetUrl"
-          aria-label="Google Sheet URL"
-          value="https://docs.google.com/spreadsheets/d/1YaLztnx1f69XP0vc4EWzSVhhA-ONyx7CWVIpFV7Wccw/edit?usp=sharing"
-        >
-        <button class="btn btn-dark" id="loadBtn">Load live data</button>
-      </div>
-      <div id="status" class="status ok">
-        Ready. Tap Load live data whenever you want to refresh.
+        <div class="status" id="status">
+          <span class="status-dot"></span>
+          Ready. Tap Load live data whenever you want to refresh.
+        </div>
+        <button class="btn btn-dark" id="loadBtn">
+          <span class="btn-icon">⟳</span>
+          Load live data
+        </button>
       </div>
     </div>
 
@@ -239,9 +225,9 @@
       </div>
       <div class="courses" id="coursesGrid"></div>
       <div class="legend">
-        <span><i class="dot" style="background:#1d7f45"></i> Present</span>
-        <span><i class="dot" style="background:#c62828"></i> Absent</span>
-        <span><i class="dot" style="background:#8a94a6"></i> No class</span>
+        <span><i class="dot" style="background:#22c55e"></i> Present</span>
+        <span><i class="dot" style="background:#f97373"></i> Absent</span>
+        <span><i class="dot" style="background:#4b5563"></i> No class</span>
       </div>
     </section>
 
@@ -287,12 +273,14 @@
   </div>
 
   <script>
+    // Hard-coded URLs so nothing shows on the UI
+    const API_URL = "https://script.google.com/macros/s/AKfycbxXuxkMWoGKYDbWN0fM5W_5b0xl0Pkqq4iaOhI5bx3yg8gdrLH70ng8KLRakU9zwIPt/exec";
+    const SHEET_URL = "https://docs.google.com/spreadsheets/d/1YaLztnx1f69XP0vc4EWzSVhhA-ONyx7CWVIpFV7Wccw/edit?usp=sharing";
+
     const tabs = document.querySelectorAll('.tab');
     const views = document.querySelectorAll('.view');
     const directTabButtons = document.querySelectorAll('[data-tab-target]');
     const statusBox = document.getElementById('status');
-    const apiUrlInput = document.getElementById('apiUrl');
-    const sheetUrlInput = document.getElementById('sheetUrl');
     const recordsBtn = document.getElementById('recordsBtn');
 
     function activateTab(name){
@@ -306,18 +294,15 @@
     function pillClass(val){ return val === 'P' ? 'p' : val === 'A' ? 'a' : 'n'; }
     function label(val){ return val === 'P' ? 'Present' : val === 'A' ? 'Absent' : 'No class'; }
     function setStatus(text, mode=''){
-      statusBox.textContent = text;
+      statusBox.textContent = "";
       statusBox.className = 'status' + (mode ? ' ' + mode : '');
+      const dot = document.createElement('span');
+      dot.className = 'status-dot';
+      statusBox.appendChild(dot);
+      statusBox.appendChild(document.createTextNode(" " + text));
+      if (mode === 'err') dot.style.background = '#f97373';
+      else dot.style.background = '#22c55e';
     }
-
-    function syncRecordsLink(){
-      const url = sheetUrlInput.value.trim();
-      recordsBtn.href = url || '#';
-      recordsBtn.style.pointerEvents = url && url.startsWith('http') ? 'auto' : 'none';
-      recordsBtn.style.opacity = url && url.startsWith('http') ? '1' : '.55';
-    }
-    sheetUrlInput.addEventListener('input', syncRecordsLink);
-    syncRecordsLink();
 
     function renderDashboard(data){
       const grid = document.getElementById('coursesGrid');
@@ -372,14 +357,10 @@
     }
 
     async function loadLiveData(){
-      const url = apiUrlInput.value.trim();
-      syncRecordsLink();
-      if (!url.startsWith('http')) {
-        setStatus('Paste a valid Apps Script web app URL first.', 'err');
-        return;
-      }
-      setStatus('Loading live data...');
+      const url = API_URL;
+      recordsBtn.href = SHEET_URL;
       try {
+        setStatus('Loading live data...');
         const res = await fetch(url + (url.includes('?') ? '&' : '?') + 'mode=dashboard');
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
@@ -387,13 +368,15 @@
         renderDashboard(data);
         renderTotals(data);
         renderStats(data);
-        setStatus('Live data loaded successfully.', 'ok');
+        setStatus('Live data loaded successfully.');
       } catch (err) {
         setStatus('Could not load live data. Check deployment access, URL, and JSON code. ' + err.message, 'err');
       }
     }
 
     document.getElementById('loadBtn').addEventListener('click', loadLiveData);
+    // initialise sheet link
+    recordsBtn.href = SHEET_URL;
   </script>
 </body>
 </html>
